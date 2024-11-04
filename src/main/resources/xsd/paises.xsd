@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.cibertec.edu.pe/ws/objects"
+           targetNamespace="http://www.cibertec.edu.pe/ws/objects"
+           elementFormDefault="qualified">
+
+    <!-- En targetNamespace estamos diciendo cuando compilamos las clases, repetara cibertec>edu>pe>ws>objects> clases -->
+
+    <!-- Definir una clase getPaisRequest con un campo nombre - con getters y setter -->
+    <xs:element name="getPaisRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Definir una clase getPaisResponse con un campo pais de tipo pais - con getters y setter -->
+    <xs:element name="getPaisResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pais" type="tns:pais" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- complextye define clase -->
+    <xs:complexType name="pais">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="capital" type="xs:string"/>
+            <xs:element name="poblacion" type="xs:string"/>
+            <xs:element name="moneda" type="tns:moneda"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- simpleType define enum mas simples -->
+    <xs:simpleType name="moneda">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PESO" />
+            <xs:enumeration value="SOL" />
+            <xs:enumeration value="DOLAR" />
+            <xs:enumeration value="EURO" />
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+</xs:schema>
